@@ -1,39 +1,73 @@
 import threading, re, time, sys
 from enum import Enum, auto
+import curses as cr
+
+import text
+import win
+import plot
 
 
+
+
+
+class Scenario(Enum):
+    CUTSCENE = 0
+    ACTION = 1
+    OTHER = 2
+
+
+class SCENERY():
+    def __init__(self):
+        self.scenario = Scenario.CUTSCENE
+
+        self.SCENARIOS = {
+            Scenario.CUTSCENE: self.cutscene,
+            Scenario.ACTION: self.action,
+            Scenario.OTHER: self.other  }
+    
+    def cutscene(self):
+        return plot.s1
+
+    def action(self):
+        return plot.s2
+
+    def other(self):
+        return plot.s3
+
+
+
+
+class State(Enum):
+    EXT = 0
+    INPUT = 1
+    OUTPUT = 2
 
 
 class GAME():
 
     def __init__(self):
-        self.state = STATE.MENU 
+        self.state = State.OUTPUT
         self.running = True
-#        self.inventory = False
 
-    self.STATES= {
-        State.MENU: self.menu
-        State.PLAY: self.play
-        State.INV: self.inv
-        State.EXT: self.ext         }
+        self.scenery = SCENERY()
 
+        self.STATES = {
+            State.EXT: self.ext,
+            State.INPUT: self.input,
+            State.OUTPUT: self.output }
+        
+    def ext(self):
+        cr.endwin()
+        self.running = False
 
-    def run(self):
-        while self.state != STATE.EXT:
-            self.states[self.state]()
+    def input(self):
+        text.Input()
 
+    def output(self):
+        text.Output(self.scenery.scenario)
 
-    def cmd(self, cmd):             #all game commands
-        cmd = input(">")
-
-        if cmd == 'play':
-            self.state = State.PLAY
-        elif cmd == 'exit':
-            self.running = False
-#        elif cmd == inv:
-#            self.inventory = True
-        else:
-            print("wrong!")
+    def Run(self):
+        self.STATES[self.state]()
 
 
 
