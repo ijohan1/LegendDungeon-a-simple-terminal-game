@@ -1,6 +1,5 @@
 import time, random 
 import curses as cr
-import plot
 
 import keys
 import win

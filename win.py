@@ -36,8 +36,8 @@ class Window():
     
     def closed(self):
         if self.std is not None:
-            self.state = state.CLOSED
+            self.state = winstate.CLOSED
             cr.endwin()
 
-
+window = Window()
 

@@ -8,10 +8,13 @@ import text
 
 
 def Loop():
-    window = win.Window()
     game = class_.GAME()
     game.scenery.scenario = class_.Scenario.CUTSCENE
-    window.winstate = win.winstate.CLOSED    
+    while game.running:
+        win.window.opened()
+        game.Run()
+    win.window.winstate = win.winstate.CLOSED    
+    win.window.closed()
 
 
 
