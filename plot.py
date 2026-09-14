@@ -8,8 +8,8 @@ import text
 #1 = "you found urself in a room with a metal door and a hole that seemed to be a switch to open it. the wooden stick to actually open it is weirdly absent. the room is mostly empty. you ever so slightly see that some amount of water is pouring down the walls. "
 
 
-s1 = text.slowprint("i am cutscene")
-s2 = text.slowprint("i am action")
-s3 = text.slowprint("i am other")
+s1 = "i am cutscene"
+s2 = "i am action"
+s3 = "i am other"
 
 

@@ -2,7 +2,7 @@ import curses as cr
 from enum import Enum, auto
 
 
-#def window():
+# def window():
 #    global std
 #    std = cr.initscr()
 #    cr.noecho()
