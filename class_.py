@@ -25,7 +25,7 @@ class SCENERY():
             Scenario.ACTION: self.action,
             Scenario.OTHER: self.other  }
     
-    def cutscene(self):
+    def cutscene(self): 
         return plot.s1
 
     def action(self):
@@ -64,7 +64,7 @@ class GAME():
         text.Input()
 
     def output(self):
-        text.Output(self.scenery.scenario)
+        text.Output(self.scenery.scenario) #this is most likely the issue too
 
     def Run(self):
         self.STATES[self.state]()

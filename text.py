@@ -43,7 +43,7 @@ import class_
 # 1st enter for skip, 2nd enter for continue. 
 def slowprint(t): 
     SPEED = 175
-    for i, l in enumerate(t):
+    for i, l in enumerate(t): # the issue with code
         if keys.enter() == True:
             win.std.addstr(t[i:])
             win.std.refresh()
