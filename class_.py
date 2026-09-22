@@ -1,4 +1,3 @@
-import threading, re, time, sys
 from enum import Enum, auto
 import curses as cr
 
@@ -10,34 +9,37 @@ import plot
 
 
 
-class Scenario(Enum):
+class Scenarios(Enum):
     CUTSCENE = 0
     ACTION = 1
     OTHER = 2
 
 
-class SCENERY():
+class SCENERY():    #<<<-----------------------
     def __init__(self):
-        self.scenario = Scenario.CUTSCENE
+        self.state = Scenarios.CUTSCENE
 
-        self.SCENARIOS = {
-            Scenario.CUTSCENE: self.cutscene,
-            Scenario.ACTION: self.action,
-            Scenario.OTHER: self.other  }
+        self.SCENARIOS = {                     #methods list to use to according state
+            Scenarios.CUTSCENE: self.cutscene,
+            Scenarios.ACTION: self.action,
+            Scenarios.OTHER: self.other  }
     
-    def cutscene(self): 
-        return plot.s1
+
+    def cutscene(self):
+            text.slowprint(plot.s1)   #stays as it is
+
 
     def action(self):
-        return plot.s2
+            return plot.s2   #needs to summon cmd prompt
+
 
     def other(self):
-        return plot.s3
+            return plot.s3   #do other stuff that may be planned for future
 
 
 
 
-class State(Enum):
+class mode(Enum):
     EXT = 0
     INPUT = 1
     OUTPUT = 2
@@ -46,28 +48,28 @@ class State(Enum):
 class GAME():
 
     def __init__(self):
-        self.state = State.OUTPUT
+        self.state = mode.OUTPUT
         self.running = True
 
-        self.scenery = SCENERY()
+        self.scenery = SCENERY()   
 
         self.STATES = {
-            State.EXT: self.ext,
-            State.INPUT: self.input,
-            State.OUTPUT: self.output }
+            mode.EXT: self.ext,
+            mode.INPUT: self.input,
+            mode.OUTPUT: self.output }
         
     def ext(self):
-        cr.endwin()
         self.running = False
+        cr.endwin()
 
     def input(self):
-        text.Input()
+        text.Input()  
 
     def output(self):
-        text.Output(self.scenery.scenario) #this is most likely the issue too
+        self.scenery.action()
 
     def Run(self):
-        self.STATES[self.state]()
+        self.STATES[self.state]() #calls the method according to the state of class
 
 
 

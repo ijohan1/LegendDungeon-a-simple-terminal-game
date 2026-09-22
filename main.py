@@ -1,5 +1,5 @@
 import curses as cr
-import time
+#import time
 
 import class_ 
 import win
@@ -9,7 +9,7 @@ import text
 
 def Loop():
     game = class_.GAME()
-    game.scenery.scenario = class_.Scenario.CUTSCENE
+    game.scenery.state = class_.Scenarios.CUTSCENE
     while game.running:
         win.window.opened()
         game.Run()
