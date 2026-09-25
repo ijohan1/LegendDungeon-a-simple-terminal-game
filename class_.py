@@ -15,7 +15,7 @@ class Scenarios(Enum):
     OTHER = 2
 
 
-class SCENERY():    
+class SCENERY:    
     def __init__(self):
         self.state = Scenarios.CUTSCENE
 
@@ -45,7 +45,7 @@ class mode(Enum):
     OUTPUT = 2
 
 
-class GAME():
+class GAME:
 
     def __init__(self):
         self.state = mode.OUTPUT

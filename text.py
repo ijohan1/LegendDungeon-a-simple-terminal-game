@@ -66,7 +66,7 @@ def slowprint(t):
 def Output(p):  #rewrite!!!!!!!!!!!!!!!!!!!!!!!!!!!
     slowprint(p)
 
-    win.Win.printing("\n")
+    win.window.printing("\n")
 #    if keys.enter == True: why
 #            cr.endwin()
 
