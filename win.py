@@ -14,7 +14,7 @@ class winstate(Enum):
     CLOSED = 2
 
 
-class Window():
+class Window():       #implement state machine like in game class
     def __init__(self):
         self.std = None
         self.state = winstate.OPENED
@@ -35,9 +35,26 @@ class Window():
         self.state = winstate.OPENED
     
     def closed(self):
-        if self.std is not None:
+        if self.std is not None:   #means: if window is already initialized then close it
             self.state = winstate.CLOSED
             cr.endwin()
+
+
+    def printing(self, n):
+        self.std.addstr(n)
+
+    def nodelay(self, k):
+        self.std.nodelay(k)
+
+    def update(self):
+        self.std.refresh()
+
+    def getch(self):
+        self.std.getch()
+
+    def Run(self):
+        self.STATES[self.state]()
+
 
 window = Window()
 

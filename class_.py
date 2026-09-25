@@ -15,7 +15,7 @@ class Scenarios(Enum):
     OTHER = 2
 
 
-class SCENERY():    #<<<-----------------------
+class SCENERY():    
     def __init__(self):
         self.state = Scenarios.CUTSCENE
 
@@ -30,7 +30,7 @@ class SCENERY():    #<<<-----------------------
 
 
     def action(self):
-            return plot.s2   #needs to summon cmd prompt
+             text.slowprint(plot.s2)            #needs to summon cmd prompt
 
 
     def other(self):
@@ -58,6 +58,7 @@ class GAME():
             mode.INPUT: self.input,
             mode.OUTPUT: self.output }
         
+
     def ext(self):
         self.running = False
         cr.endwin()

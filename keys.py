@@ -3,7 +3,7 @@ import win
 
 
 def enter():    
-    check = win.window.std.getch() 
+    check = win.Window.getch() 
     if check == 10:
         return True
     return False

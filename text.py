@@ -15,8 +15,8 @@ import class_
 #          |___|                         |___|             
 #          
 #----------------------------------------------------------------"""
-#    win.std.addstr(NAME)
-#    win.std.addstr("\n")
+#    win.Win.printing(NAME)
+#    win.Win.printing("\n")
 #
 
 
@@ -45,30 +45,30 @@ def slowprint(t):
     SPEED = 175
     for i, l in enumerate(t): # the issue with code
         if keys.enter() == True:
-            win.std.addstr(t[i:])
-            win.std.refresh()
+            win.Win.printing(t[i:])
+            win.Win.update()
 
 
-            win.std.nodelay(False)         
-            while win.std.getch() != 10: 
+            win.Win.nodelay(False)         
+            while win.Win.getch() != 10: 
                 pass
-            win.std.nodelay(True)
+            win.Win.nodelay(True)
 
 
             print("")
             return
-        win.std.addstr(l)
-        win.std.refresh()
+        win.Win.printing(l)
+        win.Win.update()
         time.sleep(random.random()*10.0/SPEED)
 
 
 
-def Output(p): 
+def Output(p):  #rewrite!!!!!!!!!!!!!!!!!!!!!!!!!!!
     slowprint(p)
 
-    win.std.addstr("\n")
-    if keys.enter == True:
-            cr.endwin()
+    win.Win.printing("\n")
+#    if keys.enter == True: why
+#            cr.endwin()
 
 
 
@@ -76,14 +76,14 @@ def Output(p):
 def Input():
     comnd = '' 
     while True:
-        win.std.clear()
-        win.std.addstr("$" + comnd)
-        win.std.refresh()
-        key = win.std.getch()
+        win.Win.update()
+        win.Win.printing("$" + comnd)
+        win.Win.update()
+        key = win.Win.getch()
         if key == 10:   #пішли команди внизу
             if comnd == "penis":
-                win.std.addstr("\nсам такий сука")
-                win.std.getch()
+                win.Win.printing("\nсам такий сука")
+                win.Win.getch()
             comnd = '' 
             return 
         elif 32 <= key <= 126:
