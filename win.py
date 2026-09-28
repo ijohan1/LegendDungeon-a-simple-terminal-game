@@ -10,7 +10,7 @@ class WinState(Enum):
 class Window:               #implement state machine like in game class
     def __init__(self):
         self.std = None
-        self.state = WinState.CLOSED
+        self.state = WinState.OPENED
 
         self.STATES = {
                 WinState.OPENED: self.opened,
@@ -38,9 +38,12 @@ class Window:               #implement state machine like in game class
     
 
 
+
+
     def printing(self, n):
         if self.std is not None:
             self.std.addstr(n)
+            self.std.refresh()
 
 
     def nodelay(self, k):
@@ -48,9 +51,9 @@ class Window:               #implement state machine like in game class
             self.std.nodelay(k)
 
 
-    def update(self):
-        if self.std is not None:
-            self.std.refresh()
+#    def update(self):
+#        if self.std is not None:
+#            self.std.refresh()
 
 
     def getch(self):

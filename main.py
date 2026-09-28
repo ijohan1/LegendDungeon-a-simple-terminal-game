@@ -11,8 +11,8 @@ def Loop():
     game = class_.GAME()
     game.scenery.state = class_.Scenarios.CUTSCENE
     while game.running:
-        win.window.Run()
-        game.Run()
+        win.window.run()
+        game.run()
     win.window.winstate = win.winstate.CLOSED    
     win.window.closed()
 

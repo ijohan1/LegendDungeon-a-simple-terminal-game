@@ -69,7 +69,7 @@ class GAME:
     def output(self):
         self.scenery.action()
 
-    def Run(self):
+    def run(self):
         self.STATES[self.state]() #calls the method according to the state of class
 
 

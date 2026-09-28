@@ -45,20 +45,18 @@ def slowprint(t):
     SPEED = 175
     for i, l in enumerate(t): # the issue with code
         if keys.enter() == True:
-            win.Win.printing(t[i:])
-            win.Win.update()
+            win.window.printing(t[i:])
 
 
-            win.Win.nodelay(False)         
-            while win.Win.getch() != 10: 
+            win.window.nodelay(False)         
+            while win.window.getch() != 10: 
                 pass
-            win.Win.nodelay(True)
+            win.window.nodelay(True)
 
 
             print("")
             return
-        win.Win.printing(l)
-        win.Win.update()
+        win.window.printing(l)
         time.sleep(random.random()*10.0/SPEED)
 
 
@@ -76,14 +74,14 @@ def Output(p):  #rewrite!!!!!!!!!!!!!!!!!!!!!!!!!!!
 def Input():
     comnd = '' 
     while True:
-        win.Win.update()
-        win.Win.printing("$" + comnd)
-        win.Win.update()
-        key = win.Win.getch()
+        win.window.update()
+        win.window.printing("$" + comnd)
+        win.window.update()
+        key = win.window.getch()
         if key == 10:   #пішли команди внизу
             if comnd == "penis":
-                win.Win.printing("\nсам такий сука")
-                win.Win.getch()
+                win.window.printing("\nсам такий сука")
+                win.window.getch()
             comnd = '' 
             return 
         elif 32 <= key <= 126:
